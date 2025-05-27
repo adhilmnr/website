@@ -843,12 +843,61 @@
                 font-size: 2rem;
             }
         }
-    </style>
+    
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e2e8f0;
+    }
+    .section, .header, .footer {
+        background-color: #1a202c;
+    }
+}
+
+
+.dark-mode body {
+    background-color: #121212;
+    color: #e2e8f0;
+}
+.dark-mode .section, 
+.dark-mode .header, 
+.dark-mode .footer {
+    background-color: #1a202c;
+}
+
+</style>
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="theme-color" content="#1a365d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hafiz Adhil Mannani",
+  "jobTitle": "Quran Instructor",
+  "url": "https://example.com",
+  "sameAs": [
+    "https://facebook.com/yourprofile",
+    "https://instagram.com/yourprofile",
+    "https://twitter.com/yourprofile"
+  ]
+}
+</script>
+
 </head>
 <body>
+<main>
     <!-- Header -->
     <header class="header">
-        <nav class="nav container">
+        <nav class="nav container" role="navigation" aria-label="Main navigation">
             <a href="#home" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-quran"></i>
@@ -1056,10 +1105,14 @@
 
             <div class="video-container">
                 <div class="video-wrapper">
-                    <div class="video-placeholder" onclick="alert('Video will be embedded here')">
+                    
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+title="Introduction Video" frameborder="0" allowfullscreen 
+style="border-radius: 12px;"></iframe>
+
                         <i class="fas fa-play-circle"></i>
-                        <h3>Introduction Video</h3>
-                        <p>Click to watch Hafiz Adhil Mannani's introduction and teaching methodology</p>
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -1179,7 +1232,16 @@
                         <h4>Available Hours</h4>
                         <p>6:00 AM - 10:00 PM (IST)</p>
                     </div>
-                </div>
+                
+<div style="margin-top: 3rem;">
+    <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form" style="max-width: 600px; margin: 0 auto;">
+        <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+        <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+        <textarea name="message" placeholder="Your Message" required rows="5" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+        <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Send Message</button>
+    </form>
+</div>
+
 
                 <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
@@ -1216,7 +1278,86 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    
+ 
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">What Students Say</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Hear from learners around the world</p>
+        </div>
+        <div style="max-width: 700px; margin: 0 auto; position: relative;">
+            <div class="testimonial-slide service-card" style="text-align: center;">
+                <p>"Ustadh Adhil made learning Quran enjoyable and effective. My recitation improved tremendously!"</p>
+                <strong>- Amina (UK)</strong>
+            </div>
+            <div class="testimonial-slide service-card" style="text-align: center;">
+                <p>"The personalized feedback and flexible timings really helped me stay consistent."</p>
+                <strong>- Yusuf (India)</strong>
+            </div>
+            <div class="testimonial-slide service-card" style="text-align: center;">
+                <p>"Very friendly and engaging teacher. My children love the classes!"</p>
+                <strong>- Fatima (UAE)</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+</section>
+
+
+<section class="section" style="background: #edf2f7;">
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">Stay Updated</h2>
+        <p class="section-subtitle">Subscribe to get the latest updates and resources</p>
+        <form action="https://example.us1.list-manage.com/subscribe/post" method="POST" target="_blank" style="max-width: 500px; margin: 2rem auto;">
+            <input type="email" name="EMAIL" placeholder="Enter your email" required style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+            <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Find answers to common questions about our Quran classes</p>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem;">How do I start my free trial?</h4>
+                <p>Simply click the WhatsApp button on the contact section and message to book your session.</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="margin-bottom: 0.5rem;">Do you provide certificates?</h4>
+                <p>Yes, official certificates are provided upon successful course completion.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Gallery</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Moments from our learning journey</p>
+        </div>
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+            <img src="https://via.placeholder.com/400x250" alt="Class 1" loading="lazy" style="width: 100%; border-radius: 8px;">
+            <img src="https://via.placeholder.com/400x250" alt="Class 2" loading="lazy" style="width: 100%; border-radius: 8px;">
+            <img src="https://via.placeholder.com/400x250" alt="Class 3" loading="lazy" style="width: 100%; border-radius: 8px;">
+            <img src="https://via.placeholder.com/400x250" alt="Class 4" loading="lazy" style="width: 100%; border-radius: 8px;">
+        </div>
+    </div>
+</section>
+
+    
+</section>
+
+<!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Hafiz Adhil Mannani. All rights reserved.</p>
@@ -1314,5 +1455,45 @@
             });
         });
     </script>
+</main>
+
+<button id="themeToggle" aria-label="Toggle theme"
+    style="position: fixed; bottom: 1rem; left: 1rem; background: #1a365d; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.2rem; cursor: pointer; z-index: 1000;">
+    <i class="fas fa-adjust"></i>
+</button>
+
+<script>
+// Theme toggle functionality
+const toggleBtn = document.getElementById('themeToggle');
+toggleBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark-mode');
+    localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+});
+if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    let index = 0;
+
+    function showSlide(i) {
+        slides.forEach((slide, idx) => {
+            slide.style.display = idx === i ? 'block' : 'none';
+        });
+    }
+
+    function nextSlide() {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+    }
+
+    showSlide(index);
+    setInterval(nextSlide, 4000);
+});
+</script>
+
 </body>
 </html>

@@ -16,8 +16,8 @@
     <meta name="twitter:description" content="Professional Quran education with certified instruction. Learn Tajweed, Hifz, and proper recitation online.">
     
     <title>Hafiz Adhil Mannani - Personal Quran Instructor | Learn Tajweed & Hifz Online</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -31,11 +31,15 @@
             --bg-light: #f7fafc;
             --bg-card: #ffffff;
             --border-color: #e2e8f0;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --border-radius: 12px;
+            --border-radius-lg: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1400px;
+            --container-padding: 1.5rem;
         }
 
         * {
@@ -46,6 +50,7 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
@@ -53,7 +58,8 @@
             line-height: 1.7;
             color: var(--text-dark);
             background-color: var(--bg-light);
-            font-size: 16px;
+            font-size: 1rem;
+            overflow-x: hidden;
         }
 
         .arabic-text {
@@ -63,9 +69,10 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 var(--container-padding);
+            width: 100%;
         }
 
         /* Header & Navigation */
@@ -79,13 +86,17 @@
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
             transition: var(--transition);
+            height: 80px;
+            display: flex;
+            align-items: center;
         }
 
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            height: 100%;
+            width: 100%;
         }
 
         .logo {
@@ -95,26 +106,29 @@
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            min-width: fit-content;
         }
 
         .logo-icon {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
+            margin: 0;
         }
 
         .nav-links a {
@@ -124,7 +138,8 @@
             font-size: 0.95rem;
             transition: var(--transition);
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.75rem 0;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -153,6 +168,10 @@
             padding: 0.5rem;
             border: none;
             background: none;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
         }
 
         .mobile-menu-btn span {
@@ -184,13 +203,16 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             border-top: 1px solid var(--border-color);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
         }
 
         .mobile-menu.active {
             display: block;
-            animation: slideDown 0.3s ease;
+            max-height: 400px;
         }
 
         .mobile-menu ul {
@@ -218,9 +240,12 @@
         .hero {
             background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #2b6cb0 100%);
             color: white;
-            padding: 8rem 0 6rem;
+            padding: 120px 0 80px;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero::before {
@@ -238,8 +263,9 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .hero-badge {
@@ -257,36 +283,38 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.1;
             letter-spacing: -0.025em;
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             font-weight: 500;
             margin-bottom: 1rem;
             color: rgba(255, 255, 255, 0.9);
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
             line-height: 1.8;
             margin-bottom: 3rem;
             color: rgba(255, 255, 255, 0.85);
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
             margin-bottom: 3rem;
-            flex-wrap: wrap;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stat-item {
@@ -294,15 +322,17 @@
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: 700;
             color: var(--gold-color);
             display: block;
+            line-height: 1;
         }
 
         .stat-label {
             font-size: 0.9rem;
             opacity: 0.8;
+            margin-top: 0.5rem;
         }
 
         .hero-buttons {
@@ -325,6 +355,8 @@
             border: 2px solid transparent;
             cursor: pointer;
             text-align: center;
+            min-width: 180px;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -336,7 +368,7 @@
         .btn-primary:hover {
             background: #c53030;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
         }
 
         .btn-secondary {
@@ -353,43 +385,43 @@
         /* Trust Section */
         .trust-section {
             background: white;
-            padding: 4rem 0;
+            padding: 5rem 0;
             border-bottom: 1px solid var(--border-color);
         }
 
         .trust-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             text-align: center;
         }
 
         .trust-item {
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
         }
 
         .trust-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
         }
 
         .trust-item h4 {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .trust-item p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-light);
         }
 
@@ -401,13 +433,13 @@
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
-            max-width: 700px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .section-title {
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 1rem;
@@ -415,16 +447,16 @@
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
             color: var(--text-light);
             line-height: 1.6;
         }
 
         .section-divider {
-            width: 60px;
+            width: 80px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            margin: 1.5rem auto;
+            margin: 2rem auto;
             border-radius: 2px;
         }
 
@@ -435,19 +467,20 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .service-card {
             background: white;
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2.5rem;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
 
         .service-card::before {
@@ -462,19 +495,19 @@
 
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
         }
 
         .service-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 2rem;
         }
 
@@ -488,6 +521,7 @@
         .service-card p {
             color: var(--text-light);
             line-height: 1.7;
+            font-size: 1rem;
         }
 
         /* Video Section */
@@ -496,15 +530,22 @@
         }
 
         .video-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .video-wrapper {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-lg);
             padding: 3rem;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .video-iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: var(--border-radius);
+            border: none;
         }
 
         .video-placeholder {
@@ -516,6 +557,11 @@
             border: 2px dashed rgba(255, 255, 255, 0.3);
             transition: var(--transition);
             cursor: pointer;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .video-placeholder:hover {
@@ -537,7 +583,7 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: center;
         }
 
@@ -546,29 +592,29 @@
         }
 
         .instructor-photo {
-            width: 280px;
-            height: 280px;
+            width: 320px;
+            height: 320px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 4rem;
+            font-size: 5rem;
             margin: 0 auto;
-            box-shadow: var(--shadow-lg);
-            border: 8px solid white;
+            box-shadow: var(--shadow-xl);
+            border: 10px solid white;
         }
 
         .about-text h3 {
-            font-size: 2.2rem;
-            font-weight: 600;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .about-text p {
-            font-size: 1.1rem;
+            font-size: 1.125rem;
             color: var(--text-light);
             line-height: 1.8;
             margin-bottom: 1.5rem;
@@ -581,35 +627,49 @@
 
         .certificates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
         .certificate-card {
             background: var(--bg-light);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2.5rem;
             text-align: center;
             border: 1px solid var(--border-color);
             transition: var(--transition);
+            height: 100%;
         }
 
         .certificate-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
         }
 
         .certificate-icon {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             background: linear-gradient(135deg, var(--gold-color), #f6ad55);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
+            font-size: 2.25rem;
+            margin: 0 auto 2rem;
+        }
+
+        .certificate-card h4 {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .certificate-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         /* Contact Section */
@@ -624,56 +684,99 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
 
         .contact-card {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
+            text-align: center;
         }
 
         .contact-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .contact-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 2rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .whatsapp-btn {
             background: #25D366;
             color: white;
-            padding: 1.2rem 2.5rem;
+            padding: 1.25rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.125rem;
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             margin: 2rem 0;
             transition: var(--transition);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
         }
 
         .whatsapp-btn:hover {
             background: #128C7E;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
         }
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
             margin-top: 3rem;
             text-align: left;
@@ -684,27 +787,145 @@
             align-items: center;
             gap: 0.75rem;
             background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
+            padding: 1.25rem;
             border-radius: var(--border-radius);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .benefit-item:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .benefit-item i {
             color: var(--success-color);
-            font-size: 1.1rem;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--bg-light);
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-slide p {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-slide strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-item h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            padding: 2rem 2rem 0;
+        }
+
+        .faq-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 0 2rem 2rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: #edf2f7;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            white-space: nowrap;
         }
 
         /* Footer */
         .footer {
             background: #1a202c;
             color: white;
-            padding: 3rem 0;
+            padding: 4rem 0;
             text-align: center;
         }
 
         .footer p {
             opacity: 0.8;
             margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
 
         /* Go to Top Button */
@@ -712,22 +933,22 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: var(--primary-color);
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             z-index: 1000;
         }
 
-        .go-to-top.visible {
+        .go-to-top.show {
             opacity: 1;
             visibility: visible;
         }
@@ -737,60 +958,25 @@
             transform: translateY(-2px);
         }
 
-        /* Animations */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: flex;
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 2rem;
             }
+        }
 
+        @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .mobile-menu-btn {
+                display: flex;
             }
 
-            .hero-stats {
-                gap: 2rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
+            .hero {
+                padding: 100px 0 60px;
                 text-align: center;
-                gap: 3rem;
-            }
-
-            .instructor-photo {
-                width: 220px;
-                height: 220px;
             }
 
             .hero-buttons {
@@ -799,20 +985,53 @@
             }
 
             .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
+                min-width: 280px;
             }
 
-            .benefits-grid {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .instructor-photo {
+                width: 250px;
+                height: 250px;
+                font-size: 4rem;
+            }
+
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .go-to-top {
-                bottom: 1rem;
-                right: 1rem;
-                width: 45px;
-                height: 45px;
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .video-iframe {
+                height: 300px;
+            }
+
+            .video-placeholder {
+                min-height: 300px;
+                padding: 2rem 1rem;
+            }
+
+            .contact-form {
+                padding: 0 1rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
         }
 
@@ -822,85 +1041,36 @@
             }
 
             .hero {
-                padding: 6rem 0 4rem;
+                padding: 80px 0 40px;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .service-card {
+                padding: 1.5rem 1rem;
             }
 
-            .section {
-                padding: 4rem 0;
+            .instructor-photo {
+                width: 200px;
+                height: 200px;
+                font-size: 3rem;
             }
 
-            .service-card,
-            .certificate-card,
-            .contact-card {
-                padding: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
+            .go-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                bottom: 1rem;
+                right: 1rem;
             }
         }
-    
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #e2e8f0;
-    }
-    .section, .header, .footer {
-        background-color: #1a202c;
-    }
-}
-
-
-.dark-mode body {
-    background-color: #121212;
-    color: #e2e8f0;
-}
-.dark-mode .section, 
-.dark-mode .header, 
-.dark-mode .footer {
-    background-color: #1a202c;
-}
-
-</style>
-
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" href="favicon.png">
-<meta name="theme-color" content="#1a365d">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="mobile-web-app-capable" content="yes">
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Hafiz Adhil Mannani",
-  "jobTitle": "Quran Instructor",
-  "url": "https://example.com",
-  "sameAs": [
-    "https://facebook.com/yourprofile",
-    "https://instagram.com/yourprofile",
-    "https://twitter.com/yourprofile"
-  ]
-}
-</script>
-
+    </style>
 </head>
 <body>
-<main>
     <!-- Header -->
     <header class="header">
-        <nav class="nav container" role="navigation" aria-label="Main navigation">
-            <a href="#home" class="logo">
+        <nav class="nav container">
+            <a href="#" class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-quran"></i>
+                    <i class="fas fa-quran-quran"></i>
                 </div>
                 <span>Hafiz Adhil Mannani</span>
             </a>
@@ -908,13 +1078,13 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#video">Introduction</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -922,19 +1092,19 @@
 
             <div class="mobile-menu" id="mobileMenu">
                 <ul>
-                    <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
-                    <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
-                    <li><a href="#video" onclick="closeMobileMenu()">Introduction</a></li>
-                    <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
-                    <li><a href="#certificates" onclick="closeMobileMenu()">Certificates</a></li>
-                    <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -942,12 +1112,10 @@
                     <span>Certified Quran Instructor</span>
                 </div>
                 
-                <h1>Hafiz Adhil Mannani</h1>
-                <p class="hero-subtitle">Personal Quran Instructor & Hafiz</p>
+                <h1>Learn Quran with Expert Guidance</h1>
+                <p class="hero-subtitle">Master Tajweed, Hifz, and Proper Recitation</p>
                 <p class="hero-description">
-                    Master the art of Quran recitation with personalized guidance from an experienced Hafiz. 
-                    Learn proper Tajweed, memorization techniques, and develop a deeper spiritual connection 
-                    with the Holy Quran through one-on-one online sessions.
+                    Join thousands of students who have transformed their Quranic journey with personalized online instruction. Learn from a certified Hafiz with years of teaching experience in Tajweed, memorization, and Islamic studies.
                 </p>
 
                 <div class="hero-stats">
@@ -967,12 +1135,12 @@
 
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-play-circle"></i>
+                        <i class="fas fa-play"></i>
                         Start Free Trial
                     </a>
-                    <a href="#video" class="btn btn-secondary">
-                        <i class="fas fa-video"></i>
-                        Watch Introduction
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
                     </a>
                 </div>
             </div>
@@ -987,57 +1155,41 @@
                     <div class="trust-icon">
                         <i class="fas fa-certificate"></i>
                     </div>
-                    <h4>Certified Hafiz</h4>
-                    <p>Qualified instructor with proven expertise</p>
+                    <h4>Certified Instructor</h4>
+                    <p>Qualified Hafiz with authentic certification and years of teaching experience</p>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h4>Trusted by Families</h4>
-                    <p>500+ students worldwide</p>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h4>Completion Certificates</h4>
-                    <p>Official certificates provided</p>
+                    <h4>Proven Results</h4>
+                    <p>Hundreds of students have successfully completed their Quranic education with us</p>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h4>Flexible Schedule</h4>
-                    <p>Learn at your convenience</p>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h4>Personal Attention</h4>
-                    <p>One-on-one focused learning</p>
+                    <h4>Flexible Timing</h4>
+                    <p>Learn at your own pace with flexible scheduling that fits your lifestyle</p>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">
                         <i class="fas fa-globe"></i>
                     </div>
-                    <h4>Online Convenience</h4>
-                    <p>Learn from anywhere in the world</p>
+                    <h4>Online Learning</h4>
+                    <p>Access quality Quranic education from anywhere in the world</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section services">
+    <section class="services section" id="services">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Our Services</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">
-                    Comprehensive Quran education tailored to your learning needs and spiritual journey
-                </p>
+                <p class="section-subtitle">Comprehensive Quranic education tailored to your needs and learning style</p>
             </div>
 
             <div class="services-grid">
@@ -1045,74 +1197,69 @@
                     <div class="service-icon">
                         <i class="fas fa-book-open"></i>
                     </div>
-                    <h3>Quran Recitation</h3>
-                    <p>Learn proper pronunciation, rhythm, and melody of Quranic verses with personalized guidance and correction techniques.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
                     <h3>Tajweed Classes</h3>
-                    <p>Master the rules of Tajweed to recite the Quran beautifully and correctly, following traditional Islamic pronunciation guidelines.</p>
+                    <p>Master the art of beautiful Quranic recitation with proper pronunciation, rhythm, and melodic rules. Learn from basic to advanced levels with personalized feedback and correction.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Hifz (Memorization)</h3>
-                    <p>Systematic memorization program with proven techniques to help you memorize the Holy Quran effectively and permanently.</p>
+                    <h3>Quran Memorization (Hifz)</h3>
+                    <p>Structured memorization program with proven techniques to help you memorize the Quran efficiently. Includes revision schedules and memory retention strategies.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-child"></i>
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3>Kids Classes</h3>
-                    <p>Special teaching methods designed for children to make Quran learning fun, engaging, and age-appropriate.</p>
+                    <h3>Quran Reading</h3>
+                    <p>Learn to read the Quran fluently from basics to advanced level. Perfect for beginners and those looking to improve their reading skills with proper pronunciation.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-language"></i>
                     </div>
-                    <h3>Malayalam Support</h3>
-                    <p>Native Malayalam instruction available for comfortable learning in your preferred language.</p>
+                    <h3>Arabic Language</h3>
+                    <p>Understand the Quranic Arabic to deepen your connection with the holy text. Learn grammar, vocabulary, and sentence structure for better comprehension.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-mosque"></i>
                     </div>
-                    <h3>Flexible Timing</h3>
-                    <p>Customized schedules to fit your lifestyle, with morning, afternoon, and evening slots available.</p>
+                    <h3>Islamic Studies</h3>
+                    <p>Comprehensive Islamic education including Seerah, Fiqh, and basic Islamic principles. Build a strong foundation of Islamic knowledge alongside Quranic studies.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Kids Special Program</h3>
+                    <p>Specially designed interactive programs for children with games, stories, and engaging activities to make Quranic learning fun and memorable.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Video Section -->
-    <section id="video" class="section video-section">
+    <section class="video-section section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Meet Your Instructor</h2>
+                <h2 class="section-title">Watch Our Introduction</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">
-                    Get to know Hafiz Adhil Mannani and learn about his teaching approach
-                </p>
+                <p class="section-subtitle">Get to know our teaching methodology and approach</p>
             </div>
 
             <div class="video-container">
                 <div class="video-wrapper">
-                    
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-title="Introduction Video" frameborder="0" allowfullscreen 
-style="border-radius: 12px;"></iframe>
-
+                    <div class="video-placeholder">
                         <i class="fas fa-play-circle"></i>
-                        
-                        
+                        <h3>Introduction Video</h3>
+                        <p>Click here to watch our comprehensive introduction video</p>
+                        <small>Coming Soon - Stay tuned for our detailed teaching methodology video</small>
                     </div>
                 </div>
             </div>
@@ -1120,29 +1267,25 @@ style="border-radius: 12px;"></iframe>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about">
+    <section class="about section" id="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
                     <div class="instructor-photo">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-user-graduate"></i>
                     </div>
                 </div>
-                
+
                 <div class="about-text">
-                    <h3>About Hafiz Adhil Mannani</h3>
+                    <h3>Meet Your Instructor</h3>
                     <p>
-                        With over 5 years of dedicated teaching experience, Hafiz Adhil Mannani has guided more than 500 students 
-                        in their Quranic journey. As a certified Hafiz, he brings deep knowledge of Islamic teachings combined 
-                        with modern pedagogical approaches.
+                        Assalamu Alaikum! I am Hafiz Adhil Mannani, a certified Quran instructor with over 5 years of experience in teaching Quranic studies. I have completed my Hifz under the guidance of renowned scholars and have been blessed to help hundreds of students in their Quranic journey.
                     </p>
                     <p>
-                        His teaching methodology focuses on creating a comfortable learning environment where students can progress 
-                        at their own pace while maintaining the highest standards of accuracy and spiritual connection.
+                        My teaching methodology focuses on creating a comfortable learning environment where students can learn at their own pace. I believe that every student is unique and deserves personalized attention to achieve their goals in Quranic education.
                     </p>
                     <p>
-                        Hafiz Adhil specializes in Tajweed, memorization techniques, and provides instruction in both English 
-                        and Malayalam, making learning accessible to diverse communities.
+                        Whether you're a beginner looking to learn Quran reading or an advanced student seeking to perfect your Tajweed, I'm here to guide you every step of the way with patience, dedication, and authentic Islamic knowledge.
                     </p>
                 </div>
             </div>
@@ -1150,14 +1293,12 @@ style="border-radius: 12px;"></iframe>
     </section>
 
     <!-- Certificates Section -->
-    <section id="certificates" class="section certificates">
+    <section class="certificates section" id="certificates">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Certifications & Achievements</h2>
                 <div class="section-divider"></div>
-                <p class="section-subtitle">
-                    Recognized qualifications and achievements in Quranic education
-                </p>
+                <p class="section-subtitle">Authentic qualifications ensuring quality Islamic education</p>
             </div>
 
             <div class="certificates-grid">
@@ -1165,56 +1306,112 @@ style="border-radius: 12px;"></iframe>
                     <div class="certificate-icon">
                         <i class="fas fa-medal"></i>
                     </div>
-                    <h4>Hafiz Certification</h4>
-                    <p>Complete memorization of the Holy Quran with proper Tajweed and pronunciation</p>
+                    <h4>Hifz Completion Certificate</h4>
+                    <p>Completed full memorization of the Holy Quran under qualified scholars with proper chain of narration (Ijazah).</p>
                 </div>
 
                 <div class="certificate-card">
                     <div class="certificate-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-award"></i>
                     </div>
-                    <h4>Tajweed Qualification</h4>
-                    <p>Advanced certification in the rules and application of Quranic recitation</p>
-                </div>
-
-                <div class="certificate-card">
-                    <div class="certificate-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h4>Teaching Certificate</h4>
-                    <p>Qualified instructor certification for Quran and Islamic studies education</p>
+                    <h4>Tajweed Certification</h4>
+                    <p>Advanced certification in Quranic recitation rules and melodic patterns from recognized Islamic institution.</p>
                 </div>
 
                 <div class="certificate-card">
                     <div class="certificate-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
-                    <h4>Excellence Award</h4>
-                    <p>Recognition for outstanding contribution to Islamic education and student success</p>
+                    <h4>Teaching Qualification</h4>
+                    <p>Qualified instructor certification with proven track record of successful student outcomes and methodology training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Students Say</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Hear from our satisfied students and their learning journey</p>
+            </div>
+
+            <div class="testimonial-container">
+                <div class="testimonial-slide active">
+                    <p>"Hafiz Adhil's teaching method is exceptional. My son improved tremendously in his Quran recitation within just a few months. The personalized attention and patient guidance made all the difference."</p>
+                    <strong>- Fatima Ahmed, Parent</strong>
+                </div>
+
+                <div class="testimonial-slide">
+                    <p>"I was struggling with Tajweed rules for years. Hafiz Adhil's systematic approach and clear explanations helped me understand and apply the rules correctly. Highly recommend!"</p>
+                    <strong>- Mohammed Hassan, Student</strong>
+                </div>
+
+                <div class="testimonial-slide">
+                    <p>"The flexibility of online classes and the quality of instruction is amazing. I've been able to continue my Hifz journey despite my busy schedule. JazakAllahu Khairan!"</p>
+                    <strong>- Aisha Rahman, Working Professional</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Common questions about our Quranic education programs</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h4>What age groups do you teach?</h4>
+                    <p>I teach students of all ages, from young children (5+ years) to adults. Special programs are designed for different age groups to ensure effective learning.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do you offer a free trial class?</h4>
+                    <p>Yes! I offer a free 30-minute trial class where you can experience my teaching methodology and discuss your learning goals.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What technology do I need for online classes?</h4>
+                    <p>You need a stable internet connection, a device with camera and microphone (computer, tablet, or smartphone), and a quiet learning environment.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How flexible are the class timings?</h4>
+                    <p>Very flexible! Classes can be scheduled according to your convenience, including weekends and evenings. We work around your schedule.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do you provide certificates upon completion?</h4>
+                    <p>Yes, certificates are provided upon successful completion of each program level, acknowledging your achievements and progress.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <section class="contact section" id="contact">
         <div class="container">
             <div class="contact-content">
                 <div class="section-header">
-                    <h2 class="section-title" style="color: white;">Start Your Quran Journey Today</h2>
+                    <h2 class="section-title" style="color: white;">Get Started Today</h2>
                     <div class="section-divider"></div>
-                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
-                        Take the first step towards mastering the Holy Quran with personalized guidance
-                    </p>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Ready to begin your Quranic journey? Contact us for your free trial class</p>
                 </div>
 
                 <div class="contact-grid">
                     <div class="contact-card">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fab fa-whatsapp"></i>
                         </div>
-                        <h4>Phone</h4>
-                        <p>+91 XXXXX XXXXX</p>
+                        <h4>WhatsApp</h4>
+                        <p>Quick response via WhatsApp for instant communication and class scheduling.</p>
                     </div>
 
                     <div class="contact-card">
@@ -1222,28 +1419,19 @@ style="border-radius: 12px;"></iframe>
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h4>Email</h4>
-                        <p>hafizadhil@example.com</p>
+                        <p>Send detailed inquiries and receive comprehensive information about our programs.</p>
                     </div>
 
                     <div class="contact-card">
                         <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
+                            <i class="fas fa-phone"></i>
                         </div>
-                        <h4>Available Hours</h4>
-                        <p>6:00 AM - 10:00 PM (IST)</p>
+                        <h4>Phone Call</h4>
+                        <p>Direct phone consultation to discuss your learning goals and requirements.</p>
                     </div>
-                
-<div style="margin-top: 3rem;">
-    <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form" style="max-width: 600px; margin: 0 auto;">
-        <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
-        <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
-        <textarea name="message" placeholder="Your Message" required rows="5" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-        <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Send Message</button>
-    </form>
-</div>
+                </div>
 
-
-                <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-btn" target="_blank">
+                <a href="https://wa.me/your-whatsapp-number" class="whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     Start Free Trial on WhatsApp
                 </a>
@@ -1251,159 +1439,58 @@ style="border-radius: 12px;"></iframe>
                 <div class="benefits-grid">
                     <div class="benefit-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Free trial session</span>
+                        <span>Free trial class available</span>
                     </div>
                     <div class="benefit-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Flexible scheduling</span>
+                        <span>Flexible scheduling options</span>
                     </div>
                     <div class="benefit-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>One-on-one attention</span>
+                        <span>Personalized learning plans</span>
                     </div>
                     <div class="benefit-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Progress tracking</span>
-                    </div>
-                    <div class="benefit-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Completion certificates</span>
-                    </div>
-                    <div class="benefit-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Affordable pricing</span>
+                        <span>Progress tracking & certificates</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    
- 
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">What Students Say</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Hear from learners around the world</p>
-        </div>
-        <div style="max-width: 700px; margin: 0 auto; position: relative;">
-            <div class="testimonial-slide service-card" style="text-align: center;">
-                <p>"Ustadh Adhil made learning Quran enjoyable and effective. My recitation improved tremendously!"</p>
-                <strong>- Amina (UK)</strong>
-            </div>
-            <div class="testimonial-slide service-card" style="text-align: center;">
-                <p>"The personalized feedback and flexible timings really helped me stay consistent."</p>
-                <strong>- Yusuf (India)</strong>
-            </div>
-            <div class="testimonial-slide service-card" style="text-align: center;">
-                <p>"Very friendly and engaging teacher. My children love the classes!"</p>
-                <strong>- Fatima (UAE)</strong>
-            </div>
-        </div>
-    </div>
-</section>
-
-    
-</section>
-
-
-<section class="section" style="background: #edf2f7;">
-    <div class="container" style="text-align: center;">
-        <h2 class="section-title">Stay Updated</h2>
-        <p class="section-subtitle">Subscribe to get the latest updates and resources</p>
-        <form action="https://example.us1.list-manage.com/subscribe/post" method="POST" target="_blank" style="max-width: 500px; margin: 2rem auto;">
-            <input type="email" name="EMAIL" placeholder="Enter your email" required style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc;">
-            <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Subscribe</button>
-        </form>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Find answers to common questions about our Quran classes</p>
-        </div>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div style="margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 0.5rem;">How do I start my free trial?</h4>
-                <p>Simply click the WhatsApp button on the contact section and message to book your session.</p>
-            </div>
-            <div style="margin-bottom: 1.5rem;">
-                <h4 style="margin-bottom: 0.5rem;">Do you provide certificates?</h4>
-                <p>Yes, official certificates are provided upon successful course completion.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Gallery</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">Moments from our learning journey</p>
-        </div>
-        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
-            <img src="https://via.placeholder.com/400x250" alt="Class 1" loading="lazy" style="width: 100%; border-radius: 8px;">
-            <img src="https://via.placeholder.com/400x250" alt="Class 2" loading="lazy" style="width: 100%; border-radius: 8px;">
-            <img src="https://via.placeholder.com/400x250" alt="Class 3" loading="lazy" style="width: 100%; border-radius: 8px;">
-            <img src="https://via.placeholder.com/400x250" alt="Class 4" loading="lazy" style="width: 100%; border-radius: 8px;">
-        </div>
-    </div>
-</section>
-
-    
-</section>
-
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Hafiz Adhil Mannani. All rights reserved.</p>
-            <p>Dedicated to spreading the knowledge and beauty of the Holy Quran</p>
+            <p>&copy; 2024 Hafiz Adhil Mannani. All rights reserved.</p>
+            <p>Dedicated to spreading Quranic knowledge with authentic Islamic education</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">
+                "And We have certainly made the Quran easy for remembrance, so is there any who will remember?" - Quran 54:17
+            </p>
         </div>
     </footer>
 
     <!-- Go to Top Button -->
-    <button class="go-to-top" id="goToTop" onclick="scrollToTop()">
+    <button class="go-to-top" id="goToTop">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
         // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-        }
-
-        function closeMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
-            mobileMenu.classList.remove('active');
-            menuBtn.classList.remove('active');
-        }
-
-        // Go to Top Button
-        window.addEventListener('scroll', function() {
-            const goToTop = document.getElementById('goToTop');
-            if (window.pageYOffset > 300) {
-                goToTop.classList.add('visible');
-            } else {
-                goToTop.classList.remove('visible');
-            }
         });
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
             });
-        }
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1411,89 +1498,79 @@ style="border-radius: 12px;"></iframe>
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.pageYOffset > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
+        // Go to top button
+        const goToTopBtn = document.getElementById('goToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                goToTopBtn.classList.add('show');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                goToTopBtn.classList.remove('show');
             }
         });
 
-        // Animation on scroll (optional enhancement)
+        goToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Testimonial slider
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        let currentSlide = 0;
+
+        function showNextTestimonial() {
+            testimonialSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % testimonialSlides.length;
+            testimonialSlides[currentSlide].classList.add('active');
+        }
+
+        // Auto-rotate testimonials every 5 seconds
+        setInterval(showNextTestimonial, 5000);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Add animation on scroll
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
         // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.service-card, .certificate-card, .trust-item');
-            animateElements.forEach(el => {
-                el.style.opacity = '0';
-                observer.observe(el);
-            });
+        document.querySelectorAll('.service-card, .certificate-card, .trust-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
-</main>
-
-<button id="themeToggle" aria-label="Toggle theme"
-    style="position: fixed; bottom: 1rem; left: 1rem; background: #1a365d; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.2rem; cursor: pointer; z-index: 1000;">
-    <i class="fas fa-adjust"></i>
-</button>
-
-<script>
-// Theme toggle functionality
-const toggleBtn = document.getElementById('themeToggle');
-toggleBtn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark-mode');
-    localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
-});
-if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.classList.add('dark-mode');
-}
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.testimonial-slide');
-    let index = 0;
-
-    function showSlide(i) {
-        slides.forEach((slide, idx) => {
-            slide.style.display = idx === i ? 'block' : 'none';
-        });
-    }
-
-    function nextSlide() {
-        index = (index + 1) % slides.length;
-        showSlide(index);
-    }
-
-    showSlide(index);
-    setInterval(nextSlide, 4000);
-});
-</script>
-
 </body>
 </html>
